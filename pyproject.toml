@@ -12,6 +12,7 @@ youloader = 'youloader.main:main'
 python = "^3.10"
 click = "^8.1.7"
 validators = "^0.22.0"
+pytube = "^15.0.0"
 
 
 [build-system]

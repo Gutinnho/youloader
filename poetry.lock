@@ -26,6 +26,17 @@ files = [
 ]
 
 [[package]]
+name = "pytube"
+version = "15.0.0"
+description = "Python 3 library for downloading YouTube Videos."
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "pytube-15.0.0-py3-none-any.whl", hash = "sha256:07b9904749e213485780d7eb606e5e5b8e4341aa4dccf699160876da00e12d78"},
+    {file = "pytube-15.0.0.tar.gz", hash = "sha256:076052efe76f390dfa24b1194ff821d4e86c17d41cb5562f3a276a8bcbfc9d1d"},
+]
+
+[[package]]
 name = "validators"
 version = "0.22.0"
 description = "Python Data Validation for Humans™"
@@ -50,4 +61,4 @@ tooling-extras = ["pyaml (>=23.7.0)", "pypandoc-binary (>=1.11)", "pytest (>=7.4
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "5a03dfb2f6dda27a732d47cf39d99fdcea40cbe11d67894234a99fb9a8770256"
+content-hash = "1f6267842f7f9a5d94191fb3778f4b0b960f9852d6f47dc8bb3e928e0ed9ba4c"
