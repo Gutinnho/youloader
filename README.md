@@ -24,6 +24,10 @@ Run using the following poetry command:
 poetry run youloader
 ```
 
+## Notes
+
+- Videos are saved in the `videos` folder in the project directory.
+
 ## License
 
 This project is licensed under the **MIT License**.
