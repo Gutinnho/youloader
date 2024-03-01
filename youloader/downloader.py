@@ -1,6 +1,8 @@
 import click
 from pytube import YouTube
 
+from .infos import show_infos
+
 
 def downloader(url: str, output_path: str) -> None:
     """
@@ -15,6 +17,9 @@ def downloader(url: str, output_path: str) -> None:
     """
     try:
         yt = YouTube(url)
+
+        click.clear()
+        show_infos(yt)
 
         video = yt.streams.get_highest_resolution()
         if not video:
