@@ -20,6 +20,15 @@ def progress_bar(chunk, file_handle, bytes_remaining):
     )
 
 
+def on_complete(stream, file_path):
+    """Displays information when the download finishes"""
+    for _ in range(2):
+        click.echo()
+    click.echo("Download completed")
+    click.echo("Saved in")
+    click.echo(file_path)
+
+
 def downloader(url: str, output_path: str) -> None:
     """
     Downloads a video from the specified URL to the specified output path
@@ -34,7 +43,9 @@ def downloader(url: str, output_path: str) -> None:
     try:
         global filesize
 
-        yt = YouTube(url, on_progress_callback=progress_bar)
+        yt = YouTube(
+            url, on_progress_callback=progress_bar, on_complete_callback=on_complete
+        )
 
         click.clear()
         show_infos(yt)
