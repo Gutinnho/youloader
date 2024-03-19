@@ -1,7 +1,7 @@
 import click
 import validators
 
-from .downloader import downloader
+from .downloader import download_manager
 
 
 def exiting():
@@ -22,8 +22,6 @@ def is_valid_url(url) -> str:
 
 
 def main():
-    output_path = "./videos/"
-
     while True:
         click.clear()
         try:
@@ -35,4 +33,4 @@ def main():
         except click.exceptions.Abort:
             exiting()
 
-    downloader(url, output_path)
+    download_manager(url)
