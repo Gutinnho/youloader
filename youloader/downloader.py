@@ -88,7 +88,18 @@ def playlist_downloader(playlist: Playlist, output_path: str):
     click.clear()
     click.secho(f"{playlist.title} | {playlist.owner}", fg="green", bold=True)
     click.secho(f"{playlist.length} Videos")
-    click.secho(f"{f'{playlist.views:,}'.replace(',', '.')} Views")
+
+    # Handling of internal error from the pytube library
+    try:
+        # Attempt to display the number of views for the playlist
+        click.secho(f"{f'{playlist.views:,}'.replace(',', '.')} Views")
+    except ValueError as e:
+        # If the expected error occurs (invalid literal for int() with base 10: 'No'), display '0 Views'
+        if str(e) == "invalid literal for int() with base 10: 'No'":
+            click.secho("0 Views")
+        # If another error of the same type (ValueError) occurs, re-raise the exception for further handling
+        else:
+            raise e
     click.echo()
 
     for url in playlist.video_urls:
