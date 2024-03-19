@@ -1,6 +1,6 @@
 # YouLoader
 
-YouLoader is a Python script for downloading YouTube videos using the PyTube library. This script is managed by Poetry to handle dependencies and the Python virtual environment.
+YouLoader is a Python script for downloading individual videos or playlists from YouTube using the PyTube library. This script is managed by Poetry to handle dependencies and the Python virtual environment.
 
 ## Prerequisites
 
@@ -27,6 +27,7 @@ poetry run youloader
 ## Notes
 
 - Videos are saved in the `videos` folder in the project directory.
+- Playlists are saved in the `playlists` folder in the project directory.
 
 ## License
 
