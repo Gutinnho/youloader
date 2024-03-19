@@ -2,13 +2,7 @@ import click
 import validators
 
 from .downloader import download_manager
-
-
-def exiting():
-    click.clear()
-    click.secho("Aborting", bold=True, fg="green")
-    exit()
-
+from .util import exiting
 
 def is_valid_url(url) -> str:
     if not isinstance(url, str):
