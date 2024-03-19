@@ -42,19 +42,20 @@ def format_date(date: Datetime) -> str:
     return date_formated
 
 
-def show_infos(stream: YouTube):
+def show_infos(stream: YouTube, is_playlist: bool):
     """
     Show the information of a video
 
     Parameters:
-    - stream (YouTube): An instance of the `YouTube` class representing the video to display information about
+        - stream (YouTube): An instance of the `YouTube` class representing the video to display information about
+        - is_playlist (bool): A boolean value to indicate whether it is a playlist, changing the way information is displayed
 
     This function prints the following information about the video:
-    - Title: The title of the video, truncated to 50 characters if it exceeds this length
-    - Author: The author of the video
-    - Duration: The duration of the video in hours, minutes, and seconds format
-    - Published Date: The date when the video was published in the format "dd/mm/yyyy"
-    - Views: The number of views the video has, formatted with thousand separators
+        - Title: The title of the video, truncated to 50 characters if it exceeds this length
+        - Author: The author of the video
+        - Duration: The duration of the video in hours, minutes, and seconds format
+        - Published Date: The date when the video was published in the format "dd/mm/yyyy"
+        - Views: The number of views the video has, formatted with thousand separators
     """
 
     title = (
@@ -69,11 +70,15 @@ def show_infos(stream: YouTube):
         published_at = format_date(publish_date)
     views = f"{stream.views:,}".replace(",", ".")
 
-    click.echo(f"{title}")
-    click.echo(f"{author}")
+    (
+        click.echo(f"{title} | {author}")
+        if is_playlist
+        else click.echo(f"{title} \n{author}")
+    )
     if publish_date:
         click.echo(f"{time} | {published_at}")
     else:
         click.echo(f"{time}")
     click.echo(f"{views} Views")
+
     click.echo()
