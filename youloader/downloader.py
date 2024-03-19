@@ -4,6 +4,7 @@ from pathlib import Path
 
 from .config import PROGRESS_BAR_WIDTH
 from .infos import show_infos
+from .util import exiting
 
 
 def progress_bar(chunk, file_handle, bytes_remaining):
@@ -69,6 +70,8 @@ def video_downloader(url: str, output_path: str):
         click.secho("Video downloaded successfully", fg="green", bold=True)
         click.secho("Saved in", fg="green")
         click.echo(output_path)
+    except KeyboardInterrupt:
+        exiting()
     except Exception as e:
         click.clear()
         click.secho(e, bold=True, fg="red", err=True)
@@ -93,6 +96,8 @@ def playlist_downloader(playlist: Playlist, output_path: str):
             downloader(url, output_path, True)
             click.echo()
             click.echo()
+        except KeyboardInterrupt:
+            exiting()
         except Exception as e:
             click.secho(e, bold=True, fg="red", err=True)
 
