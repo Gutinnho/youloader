@@ -9,13 +9,20 @@ from .infos import show_infos
 def progress_bar(chunk, file_handle, bytes_remaining):
     """Displays a progress bar during download"""
     current = (filesize - bytes_remaining) / filesize
-    percent = ("{0:.0f}").format(current * 100)
+    percent = int(("{0:.0f}").format(current * 100))
 
     progress = int(PROGRESS_BAR_WIDTH * current)
     bar = ("█" * progress) + ("-" * (PROGRESS_BAR_WIDTH - progress))
 
+    if percent < 33:
+        percent_str = click.style(f"{percent}%", fg="red")
+    elif percent < 66:
+        percent_str = click.style(f"{percent}%", fg="yellow")
+    else:
+        percent_str = click.style(f"{percent}%", fg="green")
+
     print(
-        f"|{bar}| {percent}%",
+        f"|{bar}| {percent_str}",
         end="\r",
         flush=True,
     )
